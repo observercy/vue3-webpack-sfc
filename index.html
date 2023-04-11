@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.runtime.global.prod.js"></script>
+    <script src="dist/HelloWorld.js"></script>
+    <title>Vu3</title>
+</head>
+
+<body>
+    <div id="app">
+    </div>
+
+    <script>
+        // Vue.createApp({}).component("HelloWorld", window.HelloWorld.default).mount("#app");
+        const app = Vue.createApp(window.HelloWorld.default);
+        app.provide('data', { message: 'hello!' });
+        app.directive('focus', {
+            mounted(el, binding, vnode, prevVnode) {
+                console.log(1111)
+                el.focus();
+            },
+
+        })
+        app.directive('color', {
+            mounted(el, binding, vnode, prevVnode) {
+                el.style.color = 'red'
+            },
+
+        })
+
+        app.mount("#app");
+        console.log(app.config)
+    </script>
+</body>
+
+</html>
